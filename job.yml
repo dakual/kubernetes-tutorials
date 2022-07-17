@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dns-control
+spec:
+  ttlSecondsAfterFinished: 10
+  completions: 2
+  parallelism: 2
+  backoffLimit: 4
+  activeDeadlineSeconds: 30
+  template:
+    spec:
+      containers:
+      - name: dns-control
+        image: busybox
+        args:
+          - /bin/sh
+          - -c
+          - date;ping -c 3 -A 8.8.8.8; ecgo Ping Compated; date '+%A, %B %d, %Y'
+      restartPolicy: Never

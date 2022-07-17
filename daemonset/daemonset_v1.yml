@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: prometheus-daemonset
+spec:
+  selector:
+    matchLabels:
+      tier: monitoring
+      name: prometheus-exporter
+  template:
+    metadata:
+      labels:
+        tier: monitoring
+        name: prometheus-exporter
+    spec:
+      containers:
+      - name: prometheus
+        image: prom/node-exporter
+        ports:
+        - containerPort: 9100
+
+# kubectl port-forward <pod-name> --address 0.0.0.0 30500:9100
