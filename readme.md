@@ -101,12 +101,14 @@ kubectl get deployment <deployment-name> -n <namespace> --output yaml
 ### View the Pod:
 ```sh
 kubectl get pods
+kubectl get pods -w
 kubectl get pods -n=<namespace>
 kubectl get pods -l app=<appname> -n=<namespace>
 kubectl get pods --all-namespaces 
 kubectl get pods --all-namespaces -o wide
 kubectl get pod <pod-name> -o yaml
 kubectl get pods --show-labels
+kubectl get pods --output=wide
 ```
 
 ### Connecting Pod:

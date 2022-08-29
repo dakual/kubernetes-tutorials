@@ -16,5 +16,5 @@ spec:
         args:
           - /bin/sh
           - -c
-          - date;ping -c 3 -A 8.8.8.8; ecgo Ping Compated; date '+%A, %B %d, %Y'
+          - date;ping -c 3 -A 8.8.8.8; echo Ping Compated; date '+%A, %B %d, %Y'
       restartPolicy: Never
