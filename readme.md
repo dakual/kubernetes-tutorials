@@ -219,7 +219,9 @@ kubectl delete secret <secret-name>
 
 ### Configmap
 ```sh
+kubectl create configmap <map-name> <data-source>
 kubectl create configmap <configmap-name> --from-literal=demo=Hello-world
+kubectl create configmap file-cm --from-file=config-files/
 kubectl describe configmap <configmap-name>
 kubectl get cm
 kubectl get cm <configmap-name> -o yaml

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod-02
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    ports:
+    - containerPort: 80
+    command: ["/bin/sh", "-c", "echo $(property.2) > $(path); sleep 3600"]
+    envFrom:
+    - configMapRef:
+        name: nginx-cm

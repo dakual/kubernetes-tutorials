@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mypod
+  name: mypod-01
 spec:
   containers:
   - image: nginx
@@ -15,8 +15,10 @@ spec:
         configMapKeyRef:
           name: nginx-cm
           key: value
+          optional: true
     - name: DATA_PATH
       valueFrom:
         configMapKeyRef:
           name: nginx-cm
           key: path
+          optional: true
