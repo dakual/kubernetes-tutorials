@@ -109,6 +109,7 @@ kubectl get pods --all-namespaces -o wide
 kubectl get pod <pod-name> -o yaml
 kubectl get pods --show-labels
 kubectl get pods --output=wide
+watch -n 1 "kubectl get pods -o wide"
 ```
 
 ### Connecting Pod:
