@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    ports:
+    - containerPort: 80
+    command: ["/bin/sh", "-c", "echo $(DATA_VALUE) > $(DATA_PATH); sleep 3600"]
+    env:
+    - name: DATA_VALUE
+      valueFrom:
+        configMapKeyRef:
+          name: nginx-cm
+          key: value
+    - name: DATA_PATH
+      valueFrom:
+        configMapKeyRef:
+          name: nginx-cm
+          key: path

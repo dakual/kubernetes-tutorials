@@ -221,5 +221,6 @@ kubectl delete secret <secret-name>
 ```sh
 kubectl create configmap <configmap-name> --from-literal=demo=Hello-world
 kubectl describe configmap <configmap-name>
+kubectl get cm
 kubectl get cm <configmap-name> -o yaml
 ```
