@@ -117,6 +117,7 @@ kubectl exec -it <pod-name> -- /bin/bash
 kubectl exec <pod-name> cat /etc/resolv.conf  //Check Pod resolv.conf file to see
 kubectl exec -ti <pod-name> -- nslookup kubernetes.default  //Check the Pod DNS
 kubectl exec -it <multi-container-pod> -c <container-name> /bin/bash   //Login into the container
+kubectl exec -it <pod-name> -- mysql -u root -p
 ```
 
 ### Delete Pod
@@ -215,6 +216,7 @@ kubectl create secret generic <secret-name> --from-literal=username=admin --from
 kubectl describe secrets <secret-name>
 kubectl get secret <secret-name> -o jsonpath='{.data.<key>}' | base64 --decode
 kubectl get secrets <secret-name> -o yaml
+echo '<value>' | base64
 echo '<base64-value>' | base64 --decode
 kubectl delete secret <secret-name>
 ```
@@ -227,4 +229,8 @@ kubectl create configmap file-cm --from-file=config-files/
 kubectl describe configmap <configmap-name>
 kubectl get cm
 kubectl get cm <configmap-name> -o yaml
+```
+
+```sh
+kubectl run -it --restart=Never --rm --image busybox:1.28 dns-test
 ```
