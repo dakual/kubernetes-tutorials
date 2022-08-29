@@ -15,4 +15,4 @@ spec:
   volumes:
     - name: config-volume
       configMap:
-        name: file-cm
+        name: nginx-cm
