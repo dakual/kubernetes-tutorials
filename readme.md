@@ -233,5 +233,8 @@ kubectl get cm <configmap-name> -o yaml
 ```
 
 ```sh
+kubectl api-resources
 kubectl run -it --restart=Never --rm --image busybox:1.28 dns-test
+kubectl rollout history <deployment-name>
+kubectl rollout undo <deployment-name> --to-revision=1
 ```
