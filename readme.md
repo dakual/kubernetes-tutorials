@@ -234,7 +234,16 @@ kubectl get cm <configmap-name> -o yaml
 
 ```sh
 kubectl api-resources
+kubectl run <name> --image=nginx
 kubectl run -it --restart=Never --rm --image busybox:1.28 dns-test
 kubectl rollout history <deployment-name>
 kubectl rollout undo <deployment-name> --to-revision=1
+```
+
+### Imperative CronJob
+```sh
+kubectl create cronjob my-cron --image=busybox --schedule="*/5 * * * *" -- echo hello
+kubectl edit cronjob/my-cron
+KUBE_EDITOR="nano" kubectl edit cronjob/my-cron
+kubectl delete cronjob my-cron
 ```
