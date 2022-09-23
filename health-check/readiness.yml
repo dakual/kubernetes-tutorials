@@ -17,12 +17,13 @@ spec:
         - name: nginx
           image: nginx
           ports:
-          - containerPort: 80
+          - name: http-port
+            containerPort: 80
           readinessProbe:
             httpGet:
               scheme: HTTP
               path: /
-              port: 80
+              port: http-port
             initialDelaySeconds: 10
             periodSeconds: 5
             timeoutSeconds: 1

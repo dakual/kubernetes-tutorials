@@ -3,6 +3,6 @@
 - Liveness probes: Liveness probes will let Kubernetes know whether your app is healthy. If your app is healthy, Kubernetes will not interfere with pod functioning, but if it is unhealthy, Kubernetes will destroy the pod and start a new one to replace it.
 
 ### There are three types of probes:
-- HTTP
-- TCP
-- Command
+- HTTP (httpGet)
+- TCP (tcpSocket)
+- Command (exec command)
