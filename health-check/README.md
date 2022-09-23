@@ -6,3 +6,11 @@
 - HTTP (httpGet)
 - TCP (tcpSocket)
 - Command (exec command)
+- gRPC (grpc)
+
+### Common
+- initialDelaySeconds
+- periodSeconds
+- timeoutSeconds
+- successThreshold
+- failureThreshold:
