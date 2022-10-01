@@ -189,7 +189,7 @@ kubectl delete -f <yaml-file>
 ### context
 ```sh
 kubectl config view
-kubectı config get-context
+kubectl config get-contexts
 kubectl config set-context <context-name> --namespace=<namespace-name> --user=kubernetes-admin --cluster=kubernetes
 kubectl config use-context <context-name> 
 kubectl config use-context kubernetes-admin@kubernetes
@@ -238,6 +238,7 @@ kubectl run <name> --image=nginx
 kubectl run -it --restart=Never --rm --image busybox:1.28 dns-test
 kubectl rollout history <deployment-name>
 kubectl rollout undo <deployment-name> --to-revision=1
+kubectl rollout restart deployment <deployment-name> -n <namespace>
 ```
 
 ### Imperative CronJob
