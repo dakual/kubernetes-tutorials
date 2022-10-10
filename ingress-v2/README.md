@@ -22,7 +22,7 @@ kubectl get service web
 
 Create the Ingress object
 ```sh
-kubectl apply -f ingress.yml
+kubectl apply -f ingress-[path/host/ssl].yml
 ```
 
 Verify the IP address is set
@@ -32,13 +32,16 @@ kubectl get ingress
 
 Add the following line to the bottom of the /etc/hosts file on your computer
 ```sh
-172.17.0.15 hello-world.info
+172.17.0.15 example.com test.example.com prod.example.com
 ```
 
 Verify that the Ingress controller is directing traffic
 ```sh
-http://hello-world.info/test1
-http://hello-world.info/test2
+http://example.com/test1
+http://example.com/test2
+
+http://test.example.com
+http://prod.example.com
 ```
 
 ## Troubleshooting
@@ -54,7 +57,7 @@ kubectl describe ingress <ingress-name> -n <namespace>
 Check the Ingress Controller Logs
 ```sh
 kubectl get pods -n <namespace>
-kubectl logs <ingress-pod> -n nginx-ingress
+kubectl logs <ingress-pod> -n <namespace>
 ```
 
 Check the Nginx Configuration
