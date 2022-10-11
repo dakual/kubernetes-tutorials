@@ -35,10 +35,20 @@ Create SSL Certificate
 openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout host.key -out host.crt -config req.conf -extensions v3_req
 ```
 
-Add SSL certificate to secret resource
+Add SSL certificate to secret resource via CLI
 ```sh
 kubectl create secret tls app-ssl --key host.key --cert host.crt
 ```
+
+Add SSL certificate to secret resource via Manifest
+```sh
+# Paste each piece of base64 encoded data into the appropriate sections of the YAML file as one line.
+cat host.crt | base64 -w 0
+cat host.key | base64 -w 0
+
+kubectl apply -f secret.yml
+```
+
 
 Add the following line to the bottom of the /etc/hosts file on your computer
 ```sh
