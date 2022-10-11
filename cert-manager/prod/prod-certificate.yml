@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: app-prod
+  namespace: demo-app
+spec:
+  secretName: app-production-certificate
+  issuerRef:
+    name: letsencrypt-prod
+  dnsNames:
+  - example.com
