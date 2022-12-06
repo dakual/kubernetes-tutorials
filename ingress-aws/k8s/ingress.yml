@@ -1,0 +1,33 @@
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: app-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /$1
+#     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+# spec:
+#   rules:
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: m1.kruta.link
+#     http:
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#           backend:
+#             service:
+#               name: app-01-svc
+#               port:
+#                 number: 80
+#   - host: m2.kruta.link
+#     http:
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#           backend:
+#             service:
+#               name: app-02-svc
+#               port:
+#                 number: 80

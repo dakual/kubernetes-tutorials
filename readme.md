@@ -283,3 +283,9 @@ kubectl drain <node-name>       # remove pods --ignore-daemonsets
 kubectl uncordon <node-name>    # Activate node
 kubectl delete node <node-name> # Delete Node
 ```
+
+```
+cat <<EOF | kubectl apply -f -
+.....
+EOF
+```
