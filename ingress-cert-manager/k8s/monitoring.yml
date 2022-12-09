@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret
+type: Opaque
+stringData:
+  api-token: blZadDVmyRLOl-ypL-8sc8ZrrPo_9bUowWyEkbod
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: daghan.altunsoy@redacreltd.com
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    solvers:
+    - dns01:
+        cloudflare:
+          email: daghan.altunsoy@redacreltd.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: certificate
+#   namespace: monitoring
+# spec:
+#   dnsNames:
+#     - grafana-eks.redacreltd.com
+#   secretName: redacreltd-com
+#   issuerRef:
+#     name: letsencrypt-staging
+#     kind: ClusterIssuer

@@ -5,11 +5,16 @@ metadata:
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - 8336-2a02-ff0-1003-8a39-214c-7894-43d4-34c.eu.ngrok.io
+    secretName: 8336-2a02-ff0-1003-8a39-214c-7894-43d4-34c.eu.ngrok.io
   rules:
-  - host: test.example.com
+  - host: 8336-2a02-ff0-1003-8a39-214c-7894-43d4-34c.eu.ngrok.io
     http:
       paths:
         - path: /
@@ -18,14 +23,5 @@ spec:
             service:
               name: app-01
               port:
-                number: 5000
-  - host: prod.example.com
-    http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: app-02
-              port:
-                number: 5000
+                number: 80
+
